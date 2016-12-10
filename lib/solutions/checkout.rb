@@ -60,10 +60,8 @@ class Checkout
   end
 
   def calculate_free_products(skus)
-    free_products = ""
     free_bs = 0
     skus.scan(/EE/) do
-      free_products += "B"
       free_bs += 1
     end
 
