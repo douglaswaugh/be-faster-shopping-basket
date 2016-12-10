@@ -18,7 +18,7 @@ class Checkout
   def checkout(skus)
     return 0 if skus == "";
 
-    total = 0
+    skus = skus.chars.sort.join
 
     special_offers = ""
     skus.scan(/AAA/) do |special_offer_A|
@@ -30,6 +30,8 @@ class Checkout
 
     skus.gsub! 'AAA', ''
     skus.gsub! 'BB', '' 
+
+    total = 0
 
     skus.each_char do |product|
       total += @prices[product.to_sym]
