@@ -71,6 +71,15 @@ class Checkout
       skus = skus.sub('B', '')
     end
 
+    free_fs = 0
+    skus.scan(/FFF/) do
+      free_fs += 1
+    end
+
+    free_fs.times do
+      skus = skus.sub('F', '')
+    end
+
     return skus
   end
 
