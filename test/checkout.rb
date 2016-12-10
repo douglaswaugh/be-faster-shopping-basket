@@ -57,6 +57,10 @@ class ClientTest < Minitest::Test
         assert_equal 380, Checkout.new.checkout("AABCCBCBBDBACCB")
     end
 
+    def test_checkout_should_handle_one_of_each_product_A_to_Z
+        assert_equal 965, Checkout.new.checkout("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+    end
+
     def test_checkout_should_handle_unknown_items
         assert_equal -1, Checkout.new.checkout('x')
     end
