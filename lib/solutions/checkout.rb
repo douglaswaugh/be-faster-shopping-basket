@@ -36,15 +36,15 @@ class Checkout
       :FFF => "F",
       :NNN => "M",
       :RRR => "Q",
-      :UUU => "U"
+      :UUUU => "U"
     }
 
     @multibuy_offers = {
       :AAAAA => :C,
       :AAA => :A,
       :BB => :B,
-      :HHHHH => :D,
       :HHHHHHHHHH => :E,
+      :HHHHH => :D,
       :KK => :F,
       :PPPPP => :G,
       :QQQ => :H,
