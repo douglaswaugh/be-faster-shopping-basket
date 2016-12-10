@@ -84,22 +84,27 @@ class Checkout
     total = 0
 
     if (stxyz_count >= 3)
-      while stxyz_count > 0
-        skus.subs('S', '')
+      total += (stxyz_count / 3) * 45
+      while stxyz_count > 0 && skus.match(/S/)
+        skus = skus.sub('S', '')
+        stxyz_count -= 1
+      endß
+      while stxyz_count > 0 && skus.match(/T/)
+        skus = skus.sub('T', '')
+        stxyz_count -= 1
       end
-      while stxyz_count > 0
-        skus.subs('T', '')
+      while stxyz_count > 0 && skus.match(/X/)
+        skus = skus.sub('X', '')
+        stxyz_count -= 1
       end
-      while stxyz_count > 0
-        skus.subs('X', '')
+      while stxyz_count > 0 && skus.match(/Y/)
+        skus = skus.sub('Y', '')
+        stxyz_count -= 1
       end
-      while stxyz_count > 0
-        skus.subs('Y', '')
+      while stxyz_count > 0 && skus.match(/Z/)
+        skus = skus.sub('Z', '')
+        stxyz_count -= 1
       end
-      while stxyz_count > 0
-        skus.subs('Z', '')
-      end
-      total += Math.floor(stxyz_count / 3)
     end
 
     skus = remove_free_products(skus)
