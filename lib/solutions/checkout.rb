@@ -38,7 +38,12 @@ class Checkout
     skus.scan(/BB/) do
       special_offers += "B"
     end
-    skus.gsub! 'BB', '' 
+    skus.gsub! 'BB', ''
+
+    free_products = ""
+    skus.scan(/EE/) do
+      free_products += "B"
+    end
 
     total = 0
 
@@ -48,6 +53,10 @@ class Checkout
 
     special_offers.each_char do |special_offer|
       total += @special_offer_prices[special_offer.to_sym]
+    end
+
+    free_products.each_char do |free_product|
+      total -= @prices[free_product.to_sym]
     end
 
     return total

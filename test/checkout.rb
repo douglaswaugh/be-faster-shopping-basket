@@ -56,4 +56,8 @@ class ClientTest < Minitest::Test
     def test_checkout_should_handle_unknown_items
         assert_equal -1, Checkout.new.checkout('x')
     end
+
+    def test_checkout_should_handle_getting_a_free_product_for_multibuy
+        assert_equal 80, Checkout.new.checkout('EEB')
+    end
 end
