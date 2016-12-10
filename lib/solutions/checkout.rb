@@ -12,7 +12,8 @@ class Checkout
 
     @special_offer_prices = {
       :A => 130,
-      :B => 45
+      :B => 45,
+      :C => 200
     }
   end
 
@@ -24,14 +25,19 @@ class Checkout
     skus = skus.chars.sort.join
 
     special_offers = ""
-    skus.scan(/AAA/) do |special_offer_A|
+    skus.scan(/AAAAA/) do
+      special_offers += "C"
+    end
+    skus.gsub! 'AAAAA', ''
+
+    skus.scan(/AAA/) do
       special_offers += "A"
     end
-    skus.scan(/BB/) do |special_offer_B|
+    skus.gsub! 'AAA', ''
+    
+    skus.scan(/BB/) do
       special_offers += "B"
     end
-
-    skus.gsub! 'AAA', ''
     skus.gsub! 'BB', '' 
 
     total = 0
