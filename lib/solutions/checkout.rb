@@ -13,7 +13,12 @@ class Checkout
   def checkout(skus)
     return 0 if skus == "";
 
-    return @prices[skus.to_sym]
+    total = 0
+    skus.each_char do |product|
+      total += @prices[product.to_sym]
+    end
+
+    return total
   end
 
 end
