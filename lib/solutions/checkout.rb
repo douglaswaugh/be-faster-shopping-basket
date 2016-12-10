@@ -16,7 +16,7 @@ class Checkout
       :B => 45,
       :C => 200
     }
-    
+
     @free_product_discounts = {
       :EE => "B",
       :FFF => "F"
@@ -29,7 +29,7 @@ class Checkout
     return -1 if skus.match(/[a-z]+/)
 
     skus = order_skus_alphabetically(skus)
-    skus = calculate_free_products(skus)
+    skus = remove_free_products(skus)
 
     special_offers = ""
     skus.scan(/AAAAA/) do
@@ -64,7 +64,7 @@ class Checkout
     return skus.chars.sort.join
   end
 
-  def calculate_free_products(skus)
+  def remove_free_products(skus)
     @free_product_discounts.each do |match,free_product|
       free_product_count = 0
       skus.scan(match.to_s) do

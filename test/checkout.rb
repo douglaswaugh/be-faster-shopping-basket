@@ -78,10 +78,10 @@ class ClientTest < Minitest::Test
     end
 
     def test_checkout_should_remove_free_products_for_E_multibuy
-        assert_equal "EEEE", Checkout.new.calculate_free_products("EEEEBB")
+        assert_equal "EEEE", Checkout.new.remove_free_products("EEEEBB")
     end
 
     def test_checkout_should_remove_free_products_for_F_multibuy
-        assert_equal "FF", Checkout.new.calculate_free_products("FFF")
+        assert_equal "FF", Checkout.new.remove_free_products("FFF")
     end
 end
