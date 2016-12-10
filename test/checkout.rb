@@ -48,4 +48,8 @@ class ClientTest < Minitest::Test
     def test_checkout_should_handle_unknown_items
         assert_equal 0, Checkout.new.checkout('x')
     end
+
+    def test_checkout_should_handle_lowercase_skus
+        assert_equal 50, Checkout.new.checkout('a') 
+    end
 end

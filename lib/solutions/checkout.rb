@@ -19,7 +19,7 @@ class Checkout
   def checkout(skus)
     return 0 if skus == "";
 
-    skus = skus.chars.sort.join
+    skus = skus.chars.sort.join.upcase
 
     special_offers = ""
     skus.scan(/AAA/) do |special_offer_A|
