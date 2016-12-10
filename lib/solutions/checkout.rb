@@ -8,6 +8,10 @@ class Checkout
       :C => 20,
       :D => 15 
     }
+
+    @special_offer_prices = {
+      :A => 130
+    }
   end
 
   def checkout(skus)
@@ -20,14 +24,14 @@ class Checkout
       special_offers += "A"
     end
 
-    skus.gsub! 'AAA', ''    
+    skus.gsub! 'AAA', ''  
 
     skus.each_char do |product|
       total += @prices[product.to_sym]
     end
 
-    special_offers.each_char do |product|
-      total += 130
+    special_offers.each_char do |special_offer|
+      total += @special_offer_prices[special_offer.to_sym]
     end
 
     return total
