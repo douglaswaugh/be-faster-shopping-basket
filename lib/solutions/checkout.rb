@@ -8,24 +8,61 @@ class Checkout
       :C => 20,
       :D => 15,
       :E => 40,
-      :F => 10 
-    }
-
-    @special_offer_prices = {
-      :A => 130,
-      :B => 45,
-      :C => 200
+      :F => 10,
+      :G => 20,
+      :H => 10,
+      :I => 35,
+      :J => 60,
+      :K => 80,
+      :L => 90,
+      :M => 15,
+      :N => 40,
+      :O => 10,
+      :P => 50,
+      :Q => 30,
+      :R => 50,
+      :S => 30,
+      :T => 20,
+      :U => 40,
+      :V => 50,
+      :W => 20,
+      :X => 90,
+      :Y => 10,
+      :Z => 50 
     }
 
     @free_product_discounts = {
       :EE => "B",
-      :FFF => "F"
+      :FFF => "F",
+      :NNN => "M",
+      :RRR => "Q",
+      :UUU => "U"
     }
 
     @multibuy_offers = {
       :AAAAA => :C,
       :AAA => :A,
-      :BB => :B
+      :BB => :B,
+      :HHHHH => :D,
+      :HHHHHHHHHH => :E,
+      :KK => :F,
+      :PPPPP => :G,
+      :QQQ => :H,
+      :VV => :I,
+      :VVV => :J
+    }
+
+    @special_offer_prices = {
+      :A => 130,
+      :B => 45,
+      :C => 200,
+      :D => 45,
+      :E => 80,
+      :F => 150,
+      :G => 200,
+      :H => 80,
+      :I => 90,
+      :J => 130
     }
   end
 
