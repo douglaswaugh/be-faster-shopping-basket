@@ -8,7 +8,6 @@ class Checkout
       :C => 20,
       :D => 15 
     }
-    @prices.default = 0
 
     @special_offer_prices = {
       :A => 130,
@@ -18,8 +17,10 @@ class Checkout
 
   def checkout(skus)
     return 0 if skus == "";
+    return -1 if skus.match(/\W+/)
+    return -1 if skus.match(/[a-z]+/)
 
-    skus = skus.chars.sort.join.upcase
+    skus = skus.chars.sort.join
 
     special_offers = ""
     skus.scan(/AAA/) do |special_offer_A|
