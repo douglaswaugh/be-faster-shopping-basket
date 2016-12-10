@@ -16,6 +16,11 @@ class Checkout
       :B => 45,
       :C => 200
     }
+    
+    @free_product_discounts = {
+      :EE => "B",
+      :FFF => "F"
+    }
   end
 
   def checkout(skus)
@@ -60,22 +65,14 @@ class Checkout
   end
 
   def calculate_free_products(skus)
-    free_bs = 0
-    skus.scan(/EE/) do
-      free_bs += 1
-    end
-
-    free_bs.times do
-      skus = skus.sub('B', '')
-    end
-
-    free_fs = 0
-    skus.scan(/FFF/) do
-      free_fs += 1
-    end
-
-    free_fs.times do
-      skus = skus.sub('F', '')
+    @free_product_discounts.each do |match,free_product|
+      free_product_count = 0
+      skus.scan(match.to_s) do
+        free_product_count += 1
+      end
+      free_product_count.times do
+        skus = skus.sub(free_product, '')
+      end
     end
 
     return skus
