@@ -40,4 +40,8 @@ class ClientTest < Minitest::Test
     def test_checkout_should_give_discount_for_out_of_order_multiple_products
         assert_equal 175, Checkout.new.checkout("ABABA")
     end
+
+    def test_checkout_should_handle_multiple_products_in_random_order
+        assert_equal 380, Checkout.new.checkout("AABCCBCBBDBACCB")
+    end
 end
