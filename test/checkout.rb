@@ -44,4 +44,8 @@ class ClientTest < Minitest::Test
     def test_checkout_should_handle_multiple_products_in_random_order
         assert_equal 380, Checkout.new.checkout("AABCCBCBBDBACCB")
     end
+
+    def test_checkout_should_handle_unknown_items
+        assert_equal 0, Checkout.new.checkout('x')
+    end
 end

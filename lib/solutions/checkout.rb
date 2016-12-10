@@ -8,6 +8,7 @@ class Checkout
       :C => 20,
       :D => 15 
     }
+    @prices.default = 0
 
     @special_offer_prices = {
       :A => 130,
