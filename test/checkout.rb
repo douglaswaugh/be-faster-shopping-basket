@@ -29,6 +29,10 @@ class ClientTest < Minitest::Test
         assert_equal 40, Checkout.new.checkout("E")
     end
 
+    def test_checkout_should_return_10_for_F
+        assert_equal 10, Checkout.new.checkout("F")
+    end
+
     def test_checkout_should_handle_multiple_products
         assert_equal 100, Checkout.new.checkout("AA")
     end
