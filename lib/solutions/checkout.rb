@@ -21,6 +21,12 @@ class Checkout
       :EE => "B",
       :FFF => "F"
     }
+
+    @multibuy_offers = {
+      :AAAAA => :C,
+      :AAA => :A,
+      :BB => :B
+    }
   end
 
   def checkout(skus)
@@ -32,20 +38,13 @@ class Checkout
     skus = remove_free_products(skus)
 
     special_offers = ""
-    skus.scan(/AAAAA/) do
-      special_offers += "C"
-    end
-    skus.gsub! 'AAAAA', ''
 
-    skus.scan(/AAA/) do
-      special_offers += "A"
+    @multibuy_offers.each do |pattern,multibuy_id|      
+      skus.scan(pattern.to_s) do
+        special_offers += multibuy_id.to_s
+      end
+      skus.gsub! pattern.to_s, ''
     end
-    skus.gsub! 'AAA', ''
-    
-    skus.scan(/BB/) do
-      special_offers += "B"
-    end
-    skus.gsub! 'BB', ''
 
     total = 0
 
