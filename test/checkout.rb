@@ -80,8 +80,4 @@ class ClientTest < Minitest::Test
     def test_checkout_should_remove_free_products_for_E_multibuy
         assert_equal "EEEE", Checkout.new.calculate_free_products("EEEEBB")
     end
-
-    def test_checkout_should_calculate_free_products_discount
-        assert_equal 60, Checkout.new.calculate_free_products_discount("BB", "BB")
-    end
 end

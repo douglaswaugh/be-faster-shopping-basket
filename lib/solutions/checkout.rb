@@ -74,12 +74,4 @@ class Checkout
     return skus
   end
 
-  def calculate_free_products_discount(skus, free_products)
-    free_products_discount = 0
-    free_products.each_char do |free_product|
-      free_products_discount += @prices[free_product.to_sym] if skus.include? free_product
-    end
-    return free_products_discount
-  end
-
 end
