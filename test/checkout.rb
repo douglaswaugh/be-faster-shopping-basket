@@ -60,4 +60,24 @@ class ClientTest < Minitest::Test
     def test_checkout_should_handle_getting_a_free_product_for_multibuy
         assert_equal 80, Checkout.new.checkout('EEB')
     end
+
+    def test_checkout_should_only_give_free_product_discount_if_customer_purchasing_free_product
+        assert_equal 80, Checkout.new.checkout('EE')
+    end
+
+    def test_checkout_should_give_customer_best_discount
+        assert_equal 160, Checkout.new.checkout('BEBEEE')
+    end
+
+    def test_checkout_should_order_skus_alphabetically
+        assert_equal "AAAABBBBCCCCDDDD", Checkout.new.order_skus_alphabetically("ABCDABCDABCDABCD")
+    end
+
+    def test_checkout_should_remove_free_products_for_E_multibuy
+        assert_equal "EEEE", Checkout.new.calculate_free_products("EEEEBB")
+    end
+
+    def test_checkout_should_calculate_free_products_discount
+        assert_equal 60, Checkout.new.calculate_free_products_discount("BB", "BB")
+    end
 end

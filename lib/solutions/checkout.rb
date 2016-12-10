@@ -22,7 +22,8 @@ class Checkout
     return -1 if skus.match(/\W+/)
     return -1 if skus.match(/[a-z]+/)
 
-    skus = skus.chars.sort.join
+    skus = order_skus_alphabetically(skus)
+    skus = calculate_free_products(skus)
 
     special_offers = ""
     skus.scan(/AAAAA/) do
@@ -40,11 +41,6 @@ class Checkout
     end
     skus.gsub! 'BB', ''
 
-    free_products = ""
-    skus.scan(/EE/) do
-      free_products += "B"
-    end
-
     total = 0
 
     skus.each_char do |product|
@@ -53,13 +49,36 @@ class Checkout
 
     special_offers.each_char do |special_offer|
       total += @special_offer_prices[special_offer.to_sym]
-    end
-
-    free_products.each_char do |free_product|
-      total -= @prices[free_product.to_sym]
-    end
+    end 
 
     return total
+  end
+
+  def order_skus_alphabetically(skus)
+    return skus.chars.sort.join
+  end
+
+  def calculate_free_products(skus)
+    free_products = ""
+    free_bs = 0
+    skus.scan(/EE/) do
+      free_products += "B"
+      free_bs += 1
+    end
+
+    free_bs.times do
+      skus = skus.sub('B', '')
+    end
+
+    return skus
+  end
+
+  def calculate_free_products_discount(skus, free_products)
+    free_products_discount = 0
+    free_products.each_char do |free_product|
+      free_products_discount += @prices[free_product.to_sym] if skus.include? free_product
+    end
+    return free_products_discount
   end
 
 end
