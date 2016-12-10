@@ -10,7 +10,8 @@ class Checkout
     }
 
     @special_offer_prices = {
-      :A => 130
+      :A => 130,
+      :B => 45
     }
   end
 
@@ -23,8 +24,12 @@ class Checkout
     skus.scan(/AAA/) do |special_offer_A|
       special_offers += "A"
     end
+    skus.scan(/BB/) do |special_offer_B|
+      special_offers += "B"
+    end
 
-    skus.gsub! 'AAA', ''  
+    skus.gsub! 'AAA', ''
+    skus.gsub! 'BB', '' 
 
     skus.each_char do |product|
       total += @prices[product.to_sym]

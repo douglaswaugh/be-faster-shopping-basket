@@ -32,4 +32,8 @@ class ClientTest < Minitest::Test
     def test_checkout_should_give_discount_for_multiple_A
         assert_equal 130, Checkout.new.checkout("AAA")
     end
+
+    def test_checkout_should_give_discount_for_multiple_B
+        assert_equal 45, Checkout.new.checkout("BB")
+    end
 end
