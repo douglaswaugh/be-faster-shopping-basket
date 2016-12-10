@@ -48,8 +48,8 @@ class Checkout
       :KK => :F,
       :PPPPP => :G,
       :QQQ => :H,
-      :VV => :I,
-      :VVV => :J
+      :VVV => :J,
+      :VV => :I
     }
 
     @special_offer_prices = {
